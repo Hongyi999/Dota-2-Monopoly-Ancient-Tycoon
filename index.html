@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helen — Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Grainy texture overlay -->
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#" class="nav__logo">Helen</a>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Welcome to my world</p>
+      <h1 class="hero__name reveal">
+        <span class="hero__name--first">Helen</span>
+      </h1>
+      <p class="hero__title reveal">
+        Digital Designer &amp; Artist<br />
+        <em>Photographer &amp; Dreamer</em>
+      </p>
+      <a href="#projects" class="hero__cta reveal">View my work</a>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section id="stats" class="stats">
+    <div class="stats__track">
+      <div class="stats__item">
+        <span class="stats__number" data-target="680">0</span>
+        <span class="stats__label">nights at the PC</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number" data-target="5400">0</span>
+        <span class="stats__label">tracks in the Work playlist</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number" data-target="1400">0</span>
+        <span class="stats__label">Pantone colors used</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number" data-target="100">0</span>
+        <span class="stats__label">courses attended</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="about__grid">
+      <div class="about__text">
+        <p class="about__label reveal">About me</p>
+        <h2 class="about__heading reveal">
+          Crafting digital<br />experiences that<br /><em>inspire &amp; delight</em>
+        </h2>
+        <p class="about__body reveal">
+          I'm a multidisciplinary designer based in the heart of the city,
+          with a deep passion for turning ideas into beautiful, functional
+          digital products. Every pixel is placed with intention — every
+          interaction designed to feel alive.
+        </p>
+        <p class="about__body reveal">
+          When I'm not pushing design boundaries, you'll find me chasing
+          golden-hour light with my camera, lost in a curated playlist, or
+          dreaming up the next big thing.
+        </p>
+      </div>
+      <div class="about__tags reveal">
+        <span class="tag">#Design Thinking</span>
+        <span class="tag">Graphic Design</span>
+        <span class="tag">#Web Design</span>
+        <span class="tag">UI / UX</span>
+        <span class="tag">#Branding</span>
+        <span class="tag">Photography</span>
+        <span class="tag">#Motion</span>
+        <span class="tag">Illustration</span>
+        <span class="tag">#Typography</span>
+        <span class="tag">Color Theory</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (Marquee) -->
+  <section id="projects" class="projects">
+    <p class="projects__label reveal">Selected Work</p>
+    <div class="marquee">
+      <div class="marquee__track">
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p1/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Aura Identity</h3>
+              <span>Branding · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p2/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Ember App</h3>
+              <span>UI / UX · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p3/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Noir Editorial</h3>
+              <span>Design + Photo · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p4/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Fade Studio</h3>
+              <span>Branding · 2023</span>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p1/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Aura Identity</h3>
+              <span>Branding · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p2/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Ember App</h3>
+              <span>UI / UX · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p3/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Noir Editorial</h3>
+              <span>Design + Photo · 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee__item">
+          <div class="marquee__card">
+            <div class="marquee__img" style="background-image: url('https://picsum.photos/seed/p4/600/400')"></div>
+            <div class="marquee__info">
+              <h3>Fade Studio</h3>
+              <span>Branding · 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width feature project -->
+    <div class="projects__feature reveal">
+      <div class="projects__feature-img" style="background-image: url('https://picsum.photos/seed/feat/1200/600')"></div>
+      <div class="projects__feature-overlay">
+        <p class="projects__feature-label">Featured Project</p>
+        <h3 class="projects__feature-title">Lunatic — Brand &amp; Digital</h3>
+        <p class="projects__feature-desc">A full brand identity and website design for an indie fragrance house. Dark, moody, and deeply personal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="contact__inner">
+      <p class="contact__label reveal">Get in touch</p>
+      <h2 class="contact__heading reveal">
+        Let's create<br /><em>something beautiful</em>
+      </h2>
+      <a href="mailto:helen@example.com" class="contact__email reveal">helen@example.com</a>
+      <div class="contact__socials reveal">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Dribbble">Dribbble</a>
+        <a href="#" aria-label="Behance">Behance</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Helen. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
