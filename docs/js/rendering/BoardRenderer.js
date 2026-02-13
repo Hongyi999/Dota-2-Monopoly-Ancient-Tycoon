@@ -42,15 +42,16 @@ class BoardRenderer {
     }
 
     /**
-     * Create center area with Dota 2 map aesthetic
+     * 🌍 Create center area - CUTE PIXEL MAP STYLE
      */
     createCenterArea(boardWidth) {
-        // Base ground - Dark mysterious terrain
+        // 🎨 Cute pixel ground - Softer, brighter color
         const groundGeometry = new THREE.PlaneGeometry(boardWidth, boardWidth);
         const groundMaterial = new THREE.MeshStandardMaterial({
-            color: 0x1a2030, // Darker, more atmospheric
+            color: 0x2d3748, // Softer dark blue-gray
             roughness: 0.9,
-            metalness: 0.1
+            metalness: 0.05,
+            flatShading: true
         });
         const ground = new THREE.Mesh(groundGeometry, groundMaterial);
         ground.rotation.x = -Math.PI / 2;
@@ -89,11 +90,12 @@ class BoardRenderer {
         );
 
         const riverMaterial = new THREE.MeshStandardMaterial({
-            color: 0x2563eb, // Deeper mystical blue
-            roughness: 0.2,
-            metalness: 0.6,
-            emissive: 0x3b82f6,
-            emissiveIntensity: 0.4 // Stronger glow
+            color: 0x60a5fa, // 🎨 Brighter, friendlier blue
+            roughness: 0.3,
+            metalness: 0.4,
+            emissive: 0x60a5fa,
+            emissiveIntensity: 0.3,
+            flatShading: true // Pixel-style
         });
 
         const river = new THREE.Mesh(riverGeometry, riverMaterial);
@@ -121,47 +123,49 @@ class BoardRenderer {
     }
 
     /**
-     * Create Ancient structure
+     * 🏰 Create Ancient structure - CUTE PIXEL STYLE
      */
     createAncient(x, y, z, color, faction) {
         const ancientGroup = new THREE.Group();
 
-        // Base
-        const baseGeometry = new THREE.CylinderGeometry(1, 1.5, 0.5, 6);
+        // 🎨 Cute pixel base (low-poly hexagon)
+        const baseGeometry = new THREE.CylinderGeometry(1.2, 1.5, 0.6, 6);
         const baseMaterial = new THREE.MeshStandardMaterial({
-            color: color,
-            roughness: 0.7,
-            metalness: 0.3
+            color: this.brightenColor(color, 1.2),
+            roughness: 0.8,
+            metalness: 0.2,
+            flatShading: true
         });
         const base = new THREE.Mesh(baseGeometry, baseMaterial);
-        base.position.y = 0.25;
+        base.position.y = 0.3;
         base.castShadow = true;
         ancientGroup.add(base);
 
-        // Tower - More dramatic colors
-        const towerGeometry = new THREE.ConeGeometry(0.8, 2, 6);
-        const towerColor = faction === 'radiant' ? 0xFFD700 : 0x8B4789; // Gold or Purple
+        // 🏰 Cute pixel tower (low-poly pyramid)
+        const towerGeometry = new THREE.ConeGeometry(1, 2.5, 4); // 4 sides = pyramid!
+        const towerColor = faction === 'radiant' ? 0xFFD700 : 0x8B4789;
         const towerMaterial = new THREE.MeshStandardMaterial({
-            color: towerColor,
-            roughness: 0.4,
-            metalness: 0.6,
+            color: this.brightenColor(towerColor, 1.1),
+            roughness: 0.6,
+            metalness: 0.3,
             emissive: color,
-            emissiveIntensity: 0.6 // Stronger glow
+            emissiveIntensity: 0.5,
+            flatShading: true
         });
         const tower = new THREE.Mesh(towerGeometry, towerMaterial);
-        tower.position.y = 1.5;
+        tower.position.y = 1.8;
         tower.castShadow = true;
         ancientGroup.add(tower);
 
-        // Powerful glow effect
-        const glowGeometry = new THREE.SphereGeometry(0.4, 16, 16);
+        // ⭐ Cute glowing star on top (low-poly sphere)
+        const glowGeometry = new THREE.SphereGeometry(0.5, 8, 8); // Low-poly sphere
         const glowMaterial = new THREE.MeshBasicMaterial({
             color: color,
             transparent: true,
-            opacity: 0.8 // More visible
+            opacity: 0.9
         });
         const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-        glow.position.y = 2.5;
+        glow.position.y = 3.2;
         ancientGroup.add(glow);
 
         ancientGroup.position.set(x, y - 0.5, z);
@@ -169,43 +173,43 @@ class BoardRenderer {
     }
 
     /**
-     * Create Roshan Pit
+     * 💀 Create Roshan Pit - CUTE PIXEL STYLE
      */
     createRoshanPit(x, y, z) {
         const pitGroup = new THREE.Group();
 
-        // Pit depression
-        const pitGeometry = new THREE.CylinderGeometry(1.5, 1, 0.8, 16);
+        // 🎨 Cute pixel pit (low-poly)
+        const pitGeometry = new THREE.CylinderGeometry(1.5, 1, 0.8, 8); // 8 sides for pixel look
         const pitMaterial = new THREE.MeshStandardMaterial({
-            color: 0x2c3e50,
+            color: 0x3f4652, // Softer gray
             roughness: 0.9,
-            metalness: 0.1
+            metalness: 0.05,
+            flatShading: true
         });
         const pit = new THREE.Mesh(pitGeometry, pitMaterial);
         pit.position.y = -0.3;
         pit.receiveShadow = true;
         pitGroup.add(pit);
 
-        // Surrounding rocks
-        for (let i = 0; i < 8; i++) {
-            const angle = (i / 8) * Math.PI * 2;
+        // 🪨 Cute pixel rocks (simple boxes for pixel aesthetic)
+        for (let i = 0; i < 6; i++) {
+            const angle = (i / 6) * Math.PI * 2;
             const rockRadius = 2;
             const rockX = Math.cos(angle) * rockRadius;
             const rockZ = Math.sin(angle) * rockRadius;
 
-            const rockGeometry = new THREE.DodecahedronGeometry(0.3 + Math.random() * 0.2, 0);
+            // Simple box rocks for pixel style
+            const rockSize = 0.3 + Math.random() * 0.2;
+            const rockGeometry = new THREE.BoxGeometry(rockSize, rockSize, rockSize);
             const rockMaterial = new THREE.MeshStandardMaterial({
-                color: 0x5a6268,
+                color: 0x6b7280, // Lighter gray
                 roughness: 0.95,
-                metalness: 0.05
+                metalness: 0.05,
+                flatShading: true
             });
             const rock = new THREE.Mesh(rockGeometry, rockMaterial);
-            rock.position.set(rockX, 0, rockZ);
-            rock.rotation.set(
-                Math.random() * Math.PI,
-                Math.random() * Math.PI,
-                Math.random() * Math.PI
-            );
+            rock.position.set(rockX, rockSize / 2, rockZ);
+            rock.rotation.y = Math.random() * Math.PI;
             rock.castShadow = true;
             pitGroup.add(rock);
         }
@@ -274,18 +278,35 @@ class BoardRenderer {
         const isCorner = (index % 10 === 0);
         const size = isCorner ? 3.2 : spaceSize;
 
-        // Base platform
-        const baseGeometry = new THREE.BoxGeometry(size, 0.3, size);
+        // 🎨 CUTE PIXEL BASE - Brighter, low-poly style
+        const baseGeometry = new THREE.BoxGeometry(size, 0.4, size);
+
+        // Brighten colors for cute pixel style
+        const brightColor = this.brightenColor(color, 1.3);
+
         const baseMaterial = new THREE.MeshStandardMaterial({
-            color: color,
-            roughness: 0.7,
-            metalness: 0.3
+            color: brightColor,
+            roughness: 0.8,
+            metalness: 0.1,
+            flatShading: true // Pixel-style low-poly shading
         });
         const base = new THREE.Mesh(baseGeometry, baseMaterial);
-        base.position.y = 0.15;
+        base.position.y = 0.2;
         base.castShadow = true;
         base.receiveShadow = true;
         spaceGroup.add(base);
+
+        // Add cute white pixel border on top
+        const borderGeometry = new THREE.BoxGeometry(size + 0.1, 0.05, size + 0.1);
+        const borderMaterial = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            roughness: 0.9,
+            metalness: 0.1,
+            flatShading: true
+        });
+        const border = new THREE.Mesh(borderGeometry, borderMaterial);
+        border.position.y = 0.42;
+        spaceGroup.add(border);
 
         // Property name label (3D text would go here - simplified for now)
         this.createPropertyLabel(spaceGroup, property, size);
@@ -331,6 +352,17 @@ class BoardRenderer {
         };
 
         return colors[faction] || 0xbdc3c7;
+    }
+
+    /**
+     * 🎨 Brighten color for cute pixel style
+     */
+    brightenColor(hexColor, factor) {
+        const color = new THREE.Color(hexColor);
+        color.r = Math.min(color.r * factor, 1);
+        color.g = Math.min(color.g * factor, 1);
+        color.b = Math.min(color.b * factor, 1);
+        return color.getHex();
     }
 
     /**

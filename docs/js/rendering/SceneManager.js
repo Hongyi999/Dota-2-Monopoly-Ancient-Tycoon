@@ -22,10 +22,10 @@ class SceneManager {
     init() {
         // Create scene
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x0a0a15); // Dota 2 dark background
+        this.scene.background = new THREE.Color(0x1a202c); // 🎨 Softer dark blue-gray (cute pixel style)
 
-        // Add fog for depth (darker, more mysterious)
-        this.scene.fog = new THREE.Fog(0x0a0a15, 40, 180);
+        // Add fog for depth (softer for cute style)
+        this.scene.fog = new THREE.Fog(0x1a202c, 45, 200);
 
         // Setup camera
         this.setupCamera();
