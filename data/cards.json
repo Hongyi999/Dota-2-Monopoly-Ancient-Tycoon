@@ -1,0 +1,126 @@
+{
+  "rune_cards": [
+    {
+      "id": "double_damage",
+      "name": "Double Damage",
+      "rarity": "rare",
+      "probability": 15,
+      "effect": "Next rent collection ×2",
+      "description": "Combo with Red Hotel for devastating damage"
+    },
+    {
+      "id": "invisibility",
+      "name": "Invisibility",
+      "rarity": "epic",
+      "probability": 5,
+      "effect": "Pass opponent properties without rent until next dice roll",
+      "description": "Traverse dangerous zones safely"
+    },
+    {
+      "id": "illusion",
+      "name": "Illusion",
+      "rarity": "common",
+      "probability": 20,
+      "effect": "Create illusion on any space, landing player stunned 1 turn",
+      "description": "Like Techies mine - trap opponents"
+    },
+    {
+      "id": "arcane",
+      "name": "Arcane",
+      "rarity": "epic",
+      "probability": 5,
+      "effect": "All ability CDs refresh immediately",
+      "description": "God-tier for ability heroes"
+    },
+    {
+      "id": "bounty",
+      "name": "Bounty",
+      "rarity": "common",
+      "probability": 20,
+      "effect": "Immediately gain 150G",
+      "description": "Economic supplement"
+    },
+    {
+      "id": "haste",
+      "name": "Haste",
+      "rarity": "rare",
+      "probability": 15,
+      "effect": "Next dice roll +3 value",
+      "description": "Quick reach target location"
+    },
+    {
+      "id": "regeneration",
+      "name": "Regeneration",
+      "rarity": "common",
+      "probability": 20,
+      "effect": "Immune to next rent payment",
+      "description": "Defensive card - save yourself"
+    }
+  ],
+  "neutral_item_cards": [
+    {
+      "id": "connection_lost",
+      "name": "Connection Lost",
+      "type": "negative",
+      "probability": 15,
+      "effect": "Skip 1 turn, cannot collect rent",
+      "description": "Light penalty - reconnecting..."
+    },
+    {
+      "id": "gabens_blessing",
+      "name": "GabeN's Blessing",
+      "type": "positive",
+      "probability": 13,
+      "effect": "Next building upgrade cost 50% off",
+      "description": "Praise GabeN!"
+    },
+    {
+      "id": "ganked",
+      "name": "Ganked!",
+      "type": "negative",
+      "probability": 10,
+      "effect": "Pay 30G to each player",
+      "description": "Enemy team coordinated attack"
+    },
+    {
+      "id": "nerfed_by_patch",
+      "name": "Nerfed by Patch",
+      "type": "negative",
+      "probability": 5,
+      "effect": "All properties -30% rent this turn",
+      "description": "IceFrog strikes again"
+    },
+    {
+      "id": "deny",
+      "name": "Deny",
+      "type": "neutral",
+      "probability": 15,
+      "effect": "One property immune to negative effects this turn, but cannot collect rent",
+      "description": "Tactical card - deny the enemy"
+    },
+    {
+      "id": "roshan_is_up",
+      "name": "Roshan is Up",
+      "type": "neutral",
+      "probability": 15,
+      "effect": "All players move 1-2 spaces toward Roshan Pit",
+      "description": "Everyone rushes to Roshan!"
+    },
+    {
+      "id": "refresher_orb",
+      "name": "Refresher Orb",
+      "type": "positive",
+      "probability": 14,
+      "effect": "All ability CDs refresh immediately",
+      "description": "Reset everything!"
+    },
+    {
+      "id": "tome_of_knowledge",
+      "name": "Tome of Knowledge",
+      "type": "positive",
+      "probability": 13,
+      "effect": "Immediately gain 300G",
+      "description": "Knowledge is power (and gold)"
+    }
+  ]
+}

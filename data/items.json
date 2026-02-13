@@ -1,0 +1,82 @@
+{
+  "items": [
+    {
+      "id": "wraith_band",
+      "name": "Wraith Band",
+      "price": 200,
+      "type": "economic",
+      "effect": "Salary +50G",
+      "description": "Extra 50G per lap, pays back in 4 laps",
+      "is_consumable": false,
+      "bonus_salary": 50
+    },
+    {
+      "id": "phase_boots",
+      "name": "Phase Boots",
+      "price": 500,
+      "type": "tactical",
+      "effect": "Can choose to move only one die's value",
+      "description": "After rolling 2 dice, choose which die to use",
+      "is_consumable": false,
+      "cooldown": 5
+    },
+    {
+      "id": "aghanims_shard",
+      "name": "Aghanim's Shard",
+      "price": 800,
+      "type": "tactical",
+      "effect": "Ability CD -1 turn",
+      "description": "Reduces all ability cooldowns by 1 turn",
+      "is_consumable": false,
+      "cd_reduction": 1
+    },
+    {
+      "id": "aghanims_scepter",
+      "name": "Aghanim's Scepter",
+      "price": 1500,
+      "type": "tactical",
+      "effect": "Force upgrade one property 1 level (no color set needed)",
+      "description": "Quick formation - upgrade any property instantly",
+      "is_consumable": false
+    },
+    {
+      "id": "divine_rapier",
+      "name": "Divine Rapier",
+      "price": 3000,
+      "type": "offensive",
+      "effect": "All property rent ×1.5",
+      "description": "Drops on bankruptcy - high risk, high reward",
+      "is_consumable": false,
+      "rent_multiplier": 1.5,
+      "drops_on_bankruptcy": true
+    },
+    {
+      "id": "black_king_bar",
+      "name": "Black King Bar",
+      "price": 300,
+      "type": "defensive",
+      "effect": "Immune to 1 jail or mine",
+      "description": "One-time immunity to negative effects",
+      "is_consumable": true
+    },
+    {
+      "id": "town_portal_scroll",
+      "name": "Town Portal Scroll",
+      "price": 50,
+      "type": "economic",
+      "effect": "Next action teleports to Fountain",
+      "description": "Emergency recall to collect salary",
+      "is_consumable": true
+    },
+    {
+      "id": "bottle",
+      "name": "Bottle",
+      "price": 100,
+      "type": "tactical",
+      "effect": "Store 1 Rune card for later use",
+      "description": "Tactical reserve - save good runes",
+      "is_consumable": false,
+      "can_store_rune": true
+    }
+  ]
+}

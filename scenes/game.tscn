@@ -1,0 +1,152 @@
+[gd_scene load_steps=2 format=3 uid="uid://dz4xvn8huqd4h"]
+
+[ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_game_scene"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_game_scene")
+
+[node name="GameManager" type="Node" parent="."]
+script = "res://scripts/game_manager.gd"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Turn: 1"
+
+[node name="Spacer" type="Control" parent="UI/MarginContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentPlayerLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Current Player: Player 1"
+
+[node name="MainArea" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoardContainer" type="CenterContainer" parent="UI/MarginContainer/VBoxContainer/MainArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoardPlaceholder" type="ColorRect" parent="UI/MarginContainer/VBoxContainer/MainArea/BoardContainer"]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 2
+color = Color(0.2, 0.3, 0.2, 1)
+
+[node name="BoardLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/MainArea/BoardContainer/BoardPlaceholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -14.0
+offset_right = 100.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Board (WIP)"
+horizontal_alignment = 1
+
+[node name="RightPanel" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer/MainArea"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerInfoLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Player Info"
+
+[node name="PlayerInfoPanel" type="Panel" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerInfoText" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel/PlayerInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player 1
+Gold: 2000G
+Position: 0
+Hero: Alchemist"
+
+[node name="EventLogLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Event Log"
+
+[node name="EventLogPanel" type="Panel" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="EventLogText" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/MainArea/RightPanel/EventLogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "• Game started
+• Player 1's turn"
+
+[node name="BottomBar" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RollDiceButton" type="Button" parent="UI/MarginContainer/VBoxContainer/BottomBar"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🎲 ROLL DICE"
+
+[node name="EndTurnButton" type="Button" parent="UI/MarginContainer/VBoxContainer/BottomBar"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "End Turn"
+
+[node name="BackToMenuButton" type="Button" parent="UI/MarginContainer/VBoxContainer/BottomBar"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back to Menu"
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/BottomBar/RollDiceButton" to="." method="_on_roll_dice_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/BottomBar/EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/BottomBar/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

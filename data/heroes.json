@@ -1,0 +1,119 @@
+{
+  "heroes": [
+    {
+      "id": "alchemist",
+      "name": "Alchemist",
+      "type": "passive",
+      "ability_name": "Greedy",
+      "ability_description": "Salary +30G; Rent income +5%",
+      "cooldown": 0,
+      "power_rating": 4,
+      "difficulty": "beginner",
+      "bonus_salary": 30,
+      "bonus_rent_percent": 5
+    },
+    {
+      "id": "bounty_hunter",
+      "name": "Bounty Hunter",
+      "type": "passive",
+      "ability_name": "Jinada",
+      "ability_description": "Pay 20% less rent on others' properties (max 3 times/lap)",
+      "cooldown": 0,
+      "power_rating": 4,
+      "difficulty": "advanced",
+      "rent_discount_percent": 20,
+      "max_uses_per_lap": 3
+    },
+    {
+      "id": "natures_prophet",
+      "name": "Nature's Prophet",
+      "type": "active",
+      "ability_name": "Teleportation",
+      "ability_description": "Teleport to any unpurchased property or own property",
+      "cooldown": 7,
+      "power_rating": 4,
+      "difficulty": "intermediate",
+      "teleport_cost": 50
+    },
+    {
+      "id": "techies",
+      "name": "Techies",
+      "type": "active",
+      "ability_name": "Land Mines",
+      "ability_description": "Place mine on any space, next player to land gets stunned 1 turn and loses 100G",
+      "cooldown": 4,
+      "power_rating": 3,
+      "difficulty": "beginner",
+      "mine_damage": 100,
+      "stun_duration": 1
+    },
+    {
+      "id": "faceless_void",
+      "name": "Faceless Void",
+      "type": "active",
+      "ability_name": "Time Walk",
+      "ability_description": "After rolling dice, can undo and move back 1-3 spaces",
+      "cooldown": 5,
+      "power_rating": 4,
+      "difficulty": "intermediate",
+      "max_backtrack": 3
+    },
+    {
+      "id": "crystal_maiden",
+      "name": "Crystal Maiden",
+      "type": "passive",
+      "ability_name": "Arcane Aura",
+      "ability_description": "When drawing Rune cards, draw 2 and choose 1",
+      "cooldown": 0,
+      "power_rating": 3,
+      "difficulty": "beginner",
+      "card_draw_bonus": 1
+    },
+    {
+      "id": "rubick",
+      "name": "Rubick",
+      "type": "active",
+      "ability_name": "Spell Steal",
+      "ability_description": "Copy the last active ability used by the previous player",
+      "cooldown": 4,
+      "power_rating": 4,
+      "difficulty": "advanced"
+    },
+    {
+      "id": "axe",
+      "name": "Axe",
+      "type": "passive",
+      "ability_name": "Counter Helix",
+      "ability_description": "When someone lands on the same space as you, force them to pay you 50G",
+      "cooldown": 0,
+      "power_rating": 3,
+      "difficulty": "beginner",
+      "friction_fee": 50
+    },
+    {
+      "id": "invoker",
+      "name": "Invoker",
+      "type": "active",
+      "ability_name": "Sun Strike",
+      "ability_description": "Target a player, deduct 10% of their current gold (min 100G, max 500G)",
+      "cooldown": 6,
+      "power_rating": 4,
+      "difficulty": "advanced",
+      "damage_percent": 10,
+      "min_damage": 100,
+      "max_damage": 500
+    },
+    {
+      "id": "pudge",
+      "name": "Pudge",
+      "type": "active",
+      "ability_name": "Meat Hook",
+      "ability_description": "Hook a player 3-4 spaces ahead to your space",
+      "cooldown": 4,
+      "power_rating": 3,
+      "difficulty": "intermediate",
+      "hook_range_min": 3,
+      "hook_range_max": 4
+    }
+  ]
+}
