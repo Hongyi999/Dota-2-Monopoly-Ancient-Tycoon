@@ -40,53 +40,53 @@
   "heroes": {
     "alchemist": {
       "name": "Alchemist",
-      "ability": "Greedy",
-      "description": "Salary +30G; Rent income +5%"
+      "ability": "Greevil's Greed",
+      "description": "Earn bonus gold from salary and property purchases"
+    },
+    "axe": {
+      "name": "Axe",
+      "ability": "Berserker's Call",
+      "description": "Force nearby players to pay you rent"
     },
     "bounty_hunter": {
       "name": "Bounty Hunter",
       "ability": "Jinada",
-      "description": "Pay 20% less rent on others' properties (max 3 times/lap)"
+      "description": "Get 20% discount on rent payments (3x/lap)"
     },
-    "natures_prophet": {
-      "name": "Nature's Prophet",
-      "ability": "Teleportation",
-      "description": "Teleport to any unpurchased property or own property"
+    "dragon_knight": {
+      "name": "Dragon Knight",
+      "ability": "Dragon Blood",
+      "description": "Immune to negative events and traps"
     },
-    "techies": {
-      "name": "Techies",
-      "ability": "Land Mines",
-      "description": "Place mine on any space, next player to land gets stunned 1 turn and loses 100G"
+    "juggernaut": {
+      "name": "Juggernaut",
+      "ability": "Omnislash",
+      "description": "Roll dice twice and choose which result to use"
     },
-    "faceless_void": {
-      "name": "Faceless Void",
-      "ability": "Time Walk",
-      "description": "After rolling dice, can undo and move back 1-3 spaces"
+    "lina": {
+      "name": "Lina",
+      "ability": "Laguna Blade",
+      "description": "Force a player to sell a property at half price"
     },
-    "crystal_maiden": {
-      "name": "Crystal Maiden",
-      "ability": "Arcane Aura",
-      "description": "When drawing Rune cards, draw 2 and choose 1"
-    },
-    "rubick": {
-      "name": "Rubick",
-      "ability": "Spell Steal",
-      "description": "Copy the last active ability used by the previous player"
-    },
-    "axe": {
-      "name": "Axe",
-      "ability": "Counter Helix",
-      "description": "When someone lands on the same space as you, force them to pay you 50G"
-    },
-    "invoker": {
-      "name": "Invoker",
-      "ability": "Sun Strike",
-      "description": "Target a player, deduct 10% of their current gold (min 100G, max 500G)"
+    "phantom_assassin": {
+      "name": "Phantom Assassin",
+      "ability": "Coup de Grace",
+      "description": "15% chance to collect double rent"
     },
     "pudge": {
       "name": "Pudge",
       "ability": "Meat Hook",
-      "description": "Hook a player 3-4 spaces ahead to your space"
+      "description": "Pull another player to your position"
+    },
+    "sniper": {
+      "name": "Sniper",
+      "ability": "Assassinate",
+      "description": "Collect rent from players within 3 spaces"
+    },
+    "zeus": {
+      "name": "Zeus",
+      "ability": "Thundergod's Wrath",
+      "description": "All players pay you 50 gold"
     }
   },
   "properties": {

@@ -25,6 +25,7 @@ const HEROES = [
         name: "Alchemist",
         ability_name: "Greevil's Greed",
         ability_description: "Earn bonus gold from salary and property purchases",
+        difficulty: "beginner",
         cooldown: 0,
         bonus_salary: 50,
         bonus_rent_percent: 10
@@ -34,6 +35,7 @@ const HEROES = [
         name: "Axe",
         ability_name: "Berserker's Call",
         ability_description: "Force nearby players to pay you rent even if not on your property",
+        difficulty: "intermediate",
         cooldown: 5
     },
     {
@@ -41,6 +43,7 @@ const HEROES = [
         name: "Bounty Hunter",
         ability_name: "Jinada",
         ability_description: "Get 20% discount on rent payments (3 times per lap)",
+        difficulty: "beginner",
         cooldown: 0,
         rent_discount_percent: 20,
         max_uses_per_lap: 3
@@ -50,6 +53,7 @@ const HEROES = [
         name: "Dragon Knight",
         ability_name: "Dragon Blood",
         ability_description: "Immune to negative events and traps",
+        difficulty: "beginner",
         cooldown: 0
     },
     {
@@ -57,6 +61,7 @@ const HEROES = [
         name: "Juggernaut",
         ability_name: "Omnislash",
         ability_description: "Roll dice twice and choose which result to use",
+        difficulty: "intermediate",
         cooldown: 8
     },
     {
@@ -64,6 +69,7 @@ const HEROES = [
         name: "Lina",
         ability_name: "Laguna Blade",
         ability_description: "Force a player to sell a random property at half price",
+        difficulty: "advanced",
         cooldown: 10
     },
     {
@@ -71,6 +77,7 @@ const HEROES = [
         name: "Phantom Assassin",
         ability_name: "Coup de Grace",
         ability_description: "15% chance to collect double rent",
+        difficulty: "intermediate",
         cooldown: 0,
         crit_chance: 15
     },
@@ -79,6 +86,7 @@ const HEROES = [
         name: "Pudge",
         ability_name: "Meat Hook",
         ability_description: "Pull another player to your position",
+        difficulty: "intermediate",
         cooldown: 6
     },
     {
@@ -86,6 +94,7 @@ const HEROES = [
         name: "Sniper",
         ability_name: "Assassinate",
         ability_description: "Collect rent from players within 3 spaces",
+        difficulty: "advanced",
         cooldown: 7
     },
     {
@@ -93,6 +102,7 @@ const HEROES = [
         name: "Zeus",
         ability_name: "Thundergod's Wrath",
         ability_description: "All players pay you 50 gold",
+        difficulty: "advanced",
         cooldown: 12
     }
 ];

@@ -211,6 +211,11 @@ async function changeLanguage(language) {
     AppState.language = language;
     updateLanguageUI();
 
+    // Re-populate hero grid to update hero names/abilities
+    if (document.getElementById('hero-grid')) {
+        populateHeroGrid();
+    }
+
     // Save to localStorage
     localStorage.setItem('ancient-tycoon-language', language);
 }
