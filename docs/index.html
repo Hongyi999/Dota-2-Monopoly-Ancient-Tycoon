@@ -1,41 +1,71 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ancient Tycoon - Dota 2 Monopoly</title>
+    <title>Ancient Tycoon - Dota 2 Monopoly 3D</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/examples/js/controls/OrbitControls.js"></script>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
+    <!-- Language Toggle (always visible) -->
+    <div id="language-toggle" class="language-toggle">
+        <button id="lang-en" class="lang-btn active" onclick="changeLanguage('en')">🇬🇧 EN</button>
+        <button id="lang-zh" class="lang-btn" onclick="changeLanguage('zh-CN')">🇨🇳 中文</button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <h2 data-i18n="menu.title">Ancient Tycoon</h2>
+            <p class="loading-text">Loading 3D assets...</p>
+        </div>
+    </div>
+
     <!-- Main Menu -->
-    <div id="main-menu" class="screen active">
+    <div id="main-menu" class="screen">
         <div class="menu-container">
-            <h1 class="game-title">⚔️ Ancient Tycoon ⚔️</h1>
-            <p class="subtitle">A Dota 2 Monopoly Game</p>
+            <h1 class="game-title glow-text">
+                <span data-i18n="menu.title">Ancient Tycoon</span>
+            </h1>
+            <p class="subtitle" data-i18n="menu.subtitle">A Dota 2 Monopoly Game</p>
 
             <div class="menu-buttons">
-                <button class="btn btn-primary" onclick="showHeroSelection()">
-                    🎮 Start Game
+                <button class="btn btn-primary btn-3d" onclick="showHeroSelection()">
+                    🎮 <span data-i18n="menu.startGame">Start Game</span>
                 </button>
-                <button class="btn btn-secondary" onclick="showInstructions()">
-                    📖 How to Play
+                <button class="btn btn-secondary btn-3d" onclick="showInstructions()">
+                    📖 <span data-i18n="menu.howToPlay">How to Play</span>
                 </button>
-                <button class="btn btn-secondary" onclick="showAbout()">
-                    ℹ️ About
+                <button class="btn btn-secondary btn-3d" onclick="showSettings()">
+                    ⚙️ <span data-i18n="menu.settings">Settings</span>
+                </button>
+                <button class="btn btn-secondary btn-3d" onclick="showAbout()">
+                    ℹ️ <span data-i18n="menu.about">About</span>
                 </button>
             </div>
 
-            <div class="version">v0.1.0 - Web Edition</div>
+            <div class="version" data-i18n="menu.version">v2.0.0 - 3D Edition</div>
         </div>
+
+        <!-- Animated background -->
+        <div class="menu-background" id="menu-background"></div>
     </div>
 
     <!-- Hero Selection -->
     <div id="hero-selection" class="screen">
         <div class="hero-selection-container">
-            <h2>Select Your Heroes</h2>
+            <h2 data-i18n="heroSelection.title">Select Your Heroes</h2>
 
             <div class="player-count-selector">
-                <label for="player-count">Number of Players:</label>
+                <label for="player-count" data-i18n="heroSelection.playerCount">Number of Players:</label>
                 <input type="range" id="player-count" min="2" max="5" value="2"
                        oninput="updatePlayerCount(this.value)">
                 <span id="player-count-display">2</span>
@@ -44,13 +74,15 @@
             <div id="hero-grid" class="hero-grid"></div>
 
             <div class="selection-info">
-                <p id="selection-status">Select <span id="heroes-needed">2</span> heroes to continue</p>
+                <p id="selection-status"></p>
             </div>
 
             <div class="hero-selection-buttons">
-                <button class="btn btn-secondary" onclick="backToMenu()">Back</button>
-                <button class="btn btn-primary" id="start-game-btn" onclick="startGame()" disabled>
-                    Start Game
+                <button class="btn btn-secondary btn-3d" onclick="backToMenu()">
+                    <span data-i18n="heroSelection.back">Back</span>
+                </button>
+                <button class="btn btn-primary btn-3d" id="start-game-btn" onclick="startGame()" disabled>
+                    <span data-i18n="heroSelection.startGame">Start Game</span>
                 </button>
             </div>
         </div>
@@ -60,45 +92,72 @@
     <div id="game-screen" class="screen">
         <div class="game-layout">
             <!-- Top Bar -->
-            <div class="top-bar">
+            <div class="top-bar glass-panel">
                 <div class="turn-info">
-                    <span>Turn: <strong id="turn-number">1</strong></span>
+                    <span><span data-i18n="game.turn">Turn</span>: <strong id="turn-number">1</strong></span>
                     <span class="separator">|</span>
-                    <span>Current Player: <strong id="current-player-name">Player 1</strong></span>
+                    <span><span data-i18n="game.currentPlayer">Current Player</span>: <strong id="current-player-name">Player 1</strong></span>
                 </div>
-                <button class="btn btn-small" onclick="backToMenu()">Menu</button>
+                <div class="top-bar-actions">
+                    <button class="btn btn-small btn-3d" onclick="toggleSound()">
+                        🔊 <span id="sound-icon">ON</span>
+                    </button>
+                    <button class="btn btn-small btn-3d" onclick="backToMenu()">
+                        📋 <span data-i18n="game.menu">Menu</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Main Game Area -->
             <div class="game-content">
-                <!-- Game Board -->
-                <div class="board-container">
-                    <canvas id="game-board" width="800" height="800"></canvas>
+                <!-- 3D Game Board Container -->
+                <div class="board-container-3d" id="board-container-3d">
+                    <!-- Three.js canvas will be inserted here -->
+                    <div class="camera-controls">
+                        <button class="control-btn" onclick="zoomIn()" title="Zoom In">🔍+</button>
+                        <button class="control-btn" onclick="zoomOut()" title="Zoom Out">🔍-</button>
+                        <button class="control-btn" onclick="resetCamera()" title="Reset View">🎯</button>
+                    </div>
                 </div>
 
                 <!-- Side Panel -->
-                <div class="side-panel">
+                <div class="side-panel glass-panel">
                     <!-- Player Info -->
                     <div class="panel-section">
-                        <h3>Player Info</h3>
+                        <h3 class="panel-title">
+                            <span data-i18n="game.playerInfo">Player Info</span>
+                        </h3>
                         <div id="player-info" class="player-info"></div>
                     </div>
 
                     <!-- Game Actions -->
                     <div class="panel-section">
-                        <h3>Actions</h3>
-                        <button class="btn btn-primary btn-block" id="roll-dice-btn" onclick="rollDice()">
-                            🎲 Roll Dice
+                        <h3 class="panel-title">
+                            <span data-i18n="game.actions.title">Actions</span>
+                        </h3>
+                        <button class="btn btn-primary btn-block btn-3d" id="roll-dice-btn" onclick="rollDice()">
+                            🎲 <span data-i18n="game.actions.rollDice">Roll Dice</span>
                         </button>
-                        <button class="btn btn-secondary btn-block" id="end-turn-btn" onclick="endTurn()" disabled>
-                            ⏭️ End Turn
+                        <button class="btn btn-secondary btn-block btn-3d" id="use-ability-btn" onclick="useAbility()" disabled>
+                            ⚡ <span data-i18n="game.actions.useAbility">Use Ability</span>
+                        </button>
+                        <button class="btn btn-secondary btn-block btn-3d" id="end-turn-btn" onclick="endTurn()" disabled>
+                            ⏭️ <span data-i18n="game.actions.endTurn">End Turn</span>
                         </button>
                         <div id="dice-result" class="dice-result"></div>
                     </div>
 
+                    <!-- Property Actions -->
+                    <div class="panel-section" id="property-actions-panel" style="display: none;">
+                        <h3 class="panel-title">Property</h3>
+                        <div id="property-actions"></div>
+                    </div>
+
                     <!-- Event Log -->
                     <div class="panel-section event-log-section">
-                        <h3>Event Log</h3>
+                        <h3 class="panel-title">
+                            <span data-i18n="game.eventLog">Event Log</span>
+                        </h3>
                         <div id="event-log" class="event-log"></div>
                     </div>
                 </div>
@@ -108,42 +167,97 @@
 
     <!-- Instructions Modal -->
     <div id="instructions-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content glass-panel">
             <span class="close" onclick="closeModal('instructions-modal')">&times;</span>
-            <h2>How to Play</h2>
+            <h2 data-i18n="modals.howToPlay.title">How to Play</h2>
             <div class="instructions">
-                <h3>🎯 Objective</h3>
-                <p>Become the richest player by buying properties and collecting rent!</p>
+                <h3 data-i18n="modals.howToPlay.objective">🎯 Objective</h3>
+                <p data-i18n="modals.howToPlay.objectiveText">Become the richest player by buying properties and collecting rent!</p>
 
-                <h3>🎮 Gameplay</h3>
-                <ul>
-                    <li><strong>Roll Dice:</strong> Click "Roll Dice" to move your hero</li>
-                    <li><strong>Buy Properties:</strong> Land on unowned properties to purchase them</li>
-                    <li><strong>Collect Rent:</strong> Earn gold when others land on your properties</li>
-                    <li><strong>Pass Fountain:</strong> Collect 200 gold when you pass the starting position</li>
-                    <li><strong>Hero Abilities:</strong> Each hero has unique passive bonuses</li>
-                </ul>
+                <h3 data-i18n="modals.howToPlay.gameplay">🎮 Gameplay</h3>
+                <p data-i18n="modals.howToPlay.gameplayText">Roll dice to move, buy properties, collect rent, and use hero abilities strategically.</p>
 
-                <h3>🏆 Winning</h3>
-                <p>Be the last player standing or have the most gold when the game ends!</p>
+                <h3 data-i18n="modals.howToPlay.winning">🏆 Winning</h3>
+                <p data-i18n="modals.howToPlay.winningText">Be the last player standing or have the most gold when the game ends!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close" onclick="closeModal('settings-modal')">&times;</span>
+            <h2 data-i18n="modals.settings.title">Settings</h2>
+            <div class="settings">
+                <div class="setting-row">
+                    <label data-i18n="modals.settings.language">Language:</label>
+                    <select id="settings-language" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="zh-CN">简体中文</option>
+                    </select>
+                </div>
+
+                <div class="setting-row">
+                    <label data-i18n="modals.settings.music">Music:</label>
+                    <input type="range" id="settings-music" min="0" max="100" value="70">
+                    <span id="music-volume">70%</span>
+                </div>
+
+                <div class="setting-row">
+                    <label data-i18n="modals.settings.effects">Sound Effects:</label>
+                    <input type="range" id="settings-sfx" min="0" max="100" value="80">
+                    <span id="sfx-volume">80%</span>
+                </div>
+
+                <div class="setting-row">
+                    <label data-i18n="modals.settings.graphics">Graphics Quality:</label>
+                    <select id="settings-graphics">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- About Modal -->
     <div id="about-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content glass-panel">
             <span class="close" onclick="closeModal('about-modal')">&times;</span>
-            <h2>About Ancient Tycoon</h2>
-            <p>A Dota 2 themed Monopoly-style board game.</p>
-            <p>All Dota 2 characters and assets are property of Valve Corporation.</p>
-            <p class="mt-20">Created with ❤️ for educational purposes.</p>
+            <h2 data-i18n="modals.about.title">About Ancient Tycoon</h2>
+            <p data-i18n="modals.about.description">A 3D Dota 2 themed Monopoly-style board game with unique hero abilities.</p>
+            <p data-i18n="modals.about.credits">All Dota 2 characters and assets are property of Valve Corporation.</p>
+            <p class="mt-20" data-i18n="modals.about.version">Version 2.0.0 - 3D Edition</p>
+        </div>
+    </div>
+
+    <!-- Property Modal -->
+    <div id="property-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close" onclick="closeModal('property-modal')">&times;</span>
+            <div id="property-modal-content"></div>
         </div>
     </div>
 
     <!-- Scripts -->
+    <!-- i18n System -->
+    <script src="js/i18n/i18n.js"></script>
+
+    <!-- Data -->
     <script src="js/constants.js"></script>
+
+    <!-- Rendering -->
+    <script src="js/rendering/SceneManager.js"></script>
+    <script src="js/rendering/BoardRenderer.js"></script>
+
+    <!-- Game Logic -->
     <script src="js/game.js"></script>
+
+    <!-- UI -->
     <script src="js/ui.js"></script>
+
+    <!-- Main -->
+    <script src="js/main.js"></script>
 </body>
 </html>

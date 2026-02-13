@@ -1,0 +1,181 @@
+{
+  "menu": {
+    "title": "Ancient Tycoon",
+    "subtitle": "A Dota 2 Monopoly Game",
+    "startGame": "Start Game",
+    "howToPlay": "How to Play",
+    "about": "About",
+    "settings": "Settings",
+    "version": "v2.0.0 - 3D Edition"
+  },
+  "heroSelection": {
+    "title": "Select Your Heroes",
+    "playerCount": "Number of Players:",
+    "selectHeroes": "Select {{count}} heroes to continue",
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "startGame": "Start Game",
+    "back": "Back"
+  },
+  "game": {
+    "turn": "Turn",
+    "currentPlayer": "Current Player",
+    "gold": "Gold",
+    "properties": "Properties",
+    "items": "Items",
+    "actions": {
+      "rollDice": "Roll Dice",
+      "useAbility": "Use Ability",
+      "endTurn": "End Turn",
+      "buyProperty": "Buy Property",
+      "buildHouse": "Build House",
+      "buildHotel": "Build Hotel"
+    },
+    "eventLog": "Event Log",
+    "menu": "Menu"
+  },
+  "heroes": {
+    "alchemist": {
+      "name": "Alchemist",
+      "ability": "Greedy",
+      "description": "Salary +30G; Rent income +5%"
+    },
+    "bounty_hunter": {
+      "name": "Bounty Hunter",
+      "ability": "Jinada",
+      "description": "Pay 20% less rent on others' properties (max 3 times/lap)"
+    },
+    "natures_prophet": {
+      "name": "Nature's Prophet",
+      "ability": "Teleportation",
+      "description": "Teleport to any unpurchased property or own property"
+    },
+    "techies": {
+      "name": "Techies",
+      "ability": "Land Mines",
+      "description": "Place mine on any space, next player to land gets stunned 1 turn and loses 100G"
+    },
+    "faceless_void": {
+      "name": "Faceless Void",
+      "ability": "Time Walk",
+      "description": "After rolling dice, can undo and move back 1-3 spaces"
+    },
+    "crystal_maiden": {
+      "name": "Crystal Maiden",
+      "ability": "Arcane Aura",
+      "description": "When drawing Rune cards, draw 2 and choose 1"
+    },
+    "rubick": {
+      "name": "Rubick",
+      "ability": "Spell Steal",
+      "description": "Copy the last active ability used by the previous player"
+    },
+    "axe": {
+      "name": "Axe",
+      "ability": "Counter Helix",
+      "description": "When someone lands on the same space as you, force them to pay you 50G"
+    },
+    "invoker": {
+      "name": "Invoker",
+      "ability": "Sun Strike",
+      "description": "Target a player, deduct 10% of their current gold (min 100G, max 500G)"
+    },
+    "pudge": {
+      "name": "Pudge",
+      "ability": "Meat Hook",
+      "description": "Hook a player 3-4 spaces ahead to your space"
+    }
+  },
+  "properties": {
+    "fountain": "Fountain",
+    "small_camp": "Small Camp",
+    "medium_camp": "Medium Camp",
+    "outpost": "Outpost",
+    "radiant_t1": "Radiant T1 Tower",
+    "radiant_t2": "Radiant T2 Tower",
+    "radiant_shrine": "Radiant Shrine",
+    "side_shop": "Side Shop",
+    "low_priority": "Low Priority",
+    "mid_t1": "Mid T1 Tower",
+    "mid_t2": "Mid T2 Tower",
+    "mid_t3": "Mid T3 Tower",
+    "secret_shop": "Secret Shop",
+    "radiant_ancients": "Radiant Ancients",
+    "dire_ancients": "Dire Ancients",
+    "neutral_item": "Neutral Item",
+    "roshan_pit": "Roshan Pit",
+    "dire_t1": "Dire T1 Tower",
+    "dire_t2": "Dire T2 Tower",
+    "dire_t3": "Dire T3 Tower",
+    "haste_rune": "Haste Rune",
+    "bounty_rune": "Bounty Rune",
+    "dire_melee_barracks": "Dire Melee Barracks",
+    "dire_ranged_barracks": "Dire Ranged Barracks",
+    "jungle_shop": "Jungle Shop",
+    "reported": "Reported!",
+    "radiant_melee_barracks": "Radiant Melee Barracks",
+    "radiant_ranged_barracks": "Radiant Ranged Barracks",
+    "radiant_t4": "Radiant T4 Towers",
+    "buyback_cost": "Buyback Cost",
+    "radiant_ancient": "Radiant Ancient",
+    "dire_ancient": "Dire Ancient"
+  },
+  "items": {
+    "wraith_band": "Wraith Band",
+    "phase_boots": "Phase Boots",
+    "aghanims_shard": "Aghanim's Shard",
+    "aghanims_scepter": "Aghanim's Scepter",
+    "divine_rapier": "Divine Rapier",
+    "black_king_bar": "Black King Bar",
+    "town_portal_scroll": "Town Portal Scroll",
+    "bottle": "Bottle"
+  },
+  "modals": {
+    "howToPlay": {
+      "title": "How to Play",
+      "objective": "Objective",
+      "objectiveText": "Become the richest player by buying properties and collecting rent!",
+      "gameplay": "Gameplay",
+      "gameplayText": "Roll dice to move, buy properties, collect rent, and use hero abilities strategically.",
+      "winning": "Winning",
+      "winningText": "Be the last player standing or have the most gold when the game ends!"
+    },
+    "about": {
+      "title": "About Ancient Tycoon",
+      "description": "A 3D Dota 2 themed Monopoly-style board game with unique hero abilities.",
+      "credits": "All Dota 2 characters and assets are property of Valve Corporation.",
+      "version": "Version 2.0.0 - 3D Edition"
+    },
+    "settings": {
+      "title": "Settings",
+      "language": "Language",
+      "sound": "Sound",
+      "music": "Music",
+      "effects": "Effects",
+      "volume": "Volume",
+      "graphics": "Graphics",
+      "quality": "Quality"
+    }
+  },
+  "messages": {
+    "welcome": "Welcome to Ancient Tycoon!",
+    "playerTurn": "{{player}}'s turn",
+    "rolled": "Rolled {{total}}",
+    "passed": "Passed {{location}} and collected {{amount}}G",
+    "landed": "Landed on {{location}}",
+    "purchased": "Purchased {{property}} for {{price}}G",
+    "paidRent": "Paid {{amount}}G rent to {{player}}",
+    "bankrupt": "{{player}} is bankrupt!",
+    "winner": "{{player}} wins!",
+    "abilityUsed": "{{player}} used {{ability}}!",
+    "cooldown": "Ability on cooldown: {{turns}} turns remaining"
+  },
+  "settings": {
+    "language": "Language",
+    "chinese": "简体中文",
+    "english": "English"
+  }
+}
