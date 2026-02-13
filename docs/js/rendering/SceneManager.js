@@ -22,10 +22,10 @@ class SceneManager {
     init() {
         // Create scene
         this.scene = new THREE.Scene();
-        this.scene.background = new THREE.Color(0x1a1a2e); // Dark blue background
+        this.scene.background = new THREE.Color(0x0a0a15); // Dota 2 dark background
 
-        // Add fog for depth
-        this.scene.fog = new THREE.Fog(0x1a1a2e, 50, 200);
+        // Add fog for depth (darker, more mysterious)
+        this.scene.fog = new THREE.Fog(0x0a0a15, 40, 180);
 
         // Setup camera
         this.setupCamera();
@@ -91,16 +91,16 @@ class SceneManager {
     }
 
     /**
-     * Setup scene lighting
+     * Setup scene lighting - Dota 2 Themed
      */
     setupLights() {
-        // Ambient light for base visibility
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        // Ambient light for base visibility (darker for more contrast)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
         this.scene.add(ambientLight);
         this.lights.push(ambientLight);
 
-        // Main directional light (sun)
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        // Main directional light (moonlight - cooler tone)
+        const directionalLight = new THREE.DirectionalLight(0xc9d6ff, 0.7);
         directionalLight.position.set(20, 30, 10);
         directionalLight.castShadow = true;
 
@@ -118,18 +118,25 @@ class SceneManager {
         this.scene.add(directionalLight);
         this.lights.push(directionalLight);
 
-        // Hemisphere light for ambient color variation
+        // Hemisphere light for Dota 2 atmosphere
         const hemisphereLight = new THREE.HemisphereLight(
-            0x87CEEB, // Sky color (light blue)
-            0x3d2817, // Ground color (brown)
-            0.3
+            0x4a5f7f, // Dark blue sky
+            0x1a2030, // Very dark ground
+            0.4
         );
         this.scene.add(hemisphereLight);
         this.lights.push(hemisphereLight);
 
-        // Point lights at special locations (Fountain, Roshan Pit)
-        this.addPointLight(0, 1, 0, 0x4CAF50, 1.0); // Fountain (green)
-        this.addPointLight(0, 1, 18, 0xF44336, 0.8); // Roshan Pit (red)
+        // 🌟 Radiant Ancient - Glowing Green/Gold
+        this.addPointLight(-15, 2, -15, 0xB8E986, 2.0); // Radiant green
+        this.addPointLight(-15, 3, -15, 0xFFD700, 1.5); // Gold glow
+
+        // 🔴 Dire Ancient - Blood Red/Purple
+        this.addPointLight(15, 2, 15, 0xC23030, 2.0); // Dire red
+        this.addPointLight(15, 3, 15, 0x8B4789, 1.5); // Purple glow
+
+        // 💀 Roshan Pit - Eerie Purple
+        this.addPointLight(0, 1.5, 18, 0x9333ea, 1.2); // Purple mystical light
     }
 
     /**

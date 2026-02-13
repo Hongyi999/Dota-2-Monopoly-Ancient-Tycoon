@@ -45,12 +45,12 @@ class BoardRenderer {
      * Create center area with Dota 2 map aesthetic
      */
     createCenterArea(boardWidth) {
-        // Base ground
+        // Base ground - Dark mysterious terrain
         const groundGeometry = new THREE.PlaneGeometry(boardWidth, boardWidth);
         const groundMaterial = new THREE.MeshStandardMaterial({
-            color: 0x2d3436,
-            roughness: 0.8,
-            metalness: 0.2
+            color: 0x1a2030, // Darker, more atmospheric
+            roughness: 0.9,
+            metalness: 0.1
         });
         const ground = new THREE.Mesh(groundGeometry, groundMaterial);
         ground.rotation.x = -Math.PI / 2;
@@ -89,11 +89,11 @@ class BoardRenderer {
         );
 
         const riverMaterial = new THREE.MeshStandardMaterial({
-            color: 0x3498db,
-            roughness: 0.3,
-            metalness: 0.5,
-            emissive: 0x1a5490,
-            emissiveIntensity: 0.2
+            color: 0x2563eb, // Deeper mystical blue
+            roughness: 0.2,
+            metalness: 0.6,
+            emissive: 0x3b82f6,
+            emissiveIntensity: 0.4 // Stronger glow
         });
 
         const river = new THREE.Mesh(riverGeometry, riverMaterial);
@@ -108,11 +108,11 @@ class BoardRenderer {
     createMapFeatures(boardWidth) {
         const featuresGroup = new THREE.Group();
 
-        // Radiant Ancient (bottom-left)
-        this.createAncient(-boardWidth / 3, 0, -boardWidth / 3, 0x4CAF50, 'radiant');
+        // 🌟 Radiant Ancient (bottom-left) - Golden Green
+        this.createAncient(-boardWidth / 3, 0, -boardWidth / 3, 0xB8E986, 'radiant');
 
-        // Dire Ancient (top-right)
-        this.createAncient(boardWidth / 3, 0, boardWidth / 3, 0xF44336, 'dire');
+        // 🔴 Dire Ancient (top-right) - Blood Red
+        this.createAncient(boardWidth / 3, 0, boardWidth / 3, 0xC23030, 'dire');
 
         // Roshan Pit (center-right)
         this.createRoshanPit(boardWidth / 4, 0, 0);
@@ -138,26 +138,27 @@ class BoardRenderer {
         base.castShadow = true;
         ancientGroup.add(base);
 
-        // Tower
+        // Tower - More dramatic colors
         const towerGeometry = new THREE.ConeGeometry(0.8, 2, 6);
+        const towerColor = faction === 'radiant' ? 0xFFD700 : 0x8B4789; // Gold or Purple
         const towerMaterial = new THREE.MeshStandardMaterial({
-            color: color,
-            roughness: 0.6,
-            metalness: 0.4,
+            color: towerColor,
+            roughness: 0.4,
+            metalness: 0.6,
             emissive: color,
-            emissiveIntensity: 0.3
+            emissiveIntensity: 0.6 // Stronger glow
         });
         const tower = new THREE.Mesh(towerGeometry, towerMaterial);
         tower.position.y = 1.5;
         tower.castShadow = true;
         ancientGroup.add(tower);
 
-        // Glow
-        const glowGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+        // Powerful glow effect
+        const glowGeometry = new THREE.SphereGeometry(0.4, 16, 16);
         const glowMaterial = new THREE.MeshBasicMaterial({
             color: color,
             transparent: true,
-            opacity: 0.6
+            opacity: 0.8 // More visible
         });
         const glow = new THREE.Mesh(glowGeometry, glowMaterial);
         glow.position.y = 2.5;
