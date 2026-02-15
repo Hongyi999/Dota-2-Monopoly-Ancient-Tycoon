@@ -3,102 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ancient Tycoon - Dota 2 Monopoly</title>
+    <title>远古大亨 - Dota 2 大富翁</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Main Menu -->
     <div id="main-menu" class="screen active">
         <div class="menu-container">
-            <h1 class="game-title">⚔️ Ancient Tycoon ⚔️</h1>
-            <p class="subtitle">A Dota 2 Monopoly Game</p>
-
-            <div class="menu-buttons">
-                <button class="btn btn-primary" onclick="showHeroSelection()">
-                    🎮 Start Game
-                </button>
-                <button class="btn btn-secondary" onclick="showInstructions()">
-                    📖 How to Play
-                </button>
-                <button class="btn btn-secondary" onclick="showAbout()">
-                    ℹ️ About
-                </button>
+            <div class="menu-logo">
+                <div class="logo-icon"></div>
+                <h1 class="game-title">远古大亨</h1>
+                <p class="subtitle">DOTA 2 大富翁</p>
             </div>
-
-            <div class="version">v0.1.0 - Web Edition</div>
+            <div class="menu-buttons">
+                <button class="btn btn-primary" onclick="showHeroSelection()">开始游戏</button>
+                <button class="btn btn-secondary" onclick="showInstructions()">游戏规则</button>
+                <button class="btn btn-secondary" onclick="showAbout()">关于游戏</button>
+            </div>
+            <div class="version">v0.4.0 丛林版</div>
         </div>
     </div>
 
-    <!-- Hero Selection -->
     <div id="hero-selection" class="screen">
         <div class="hero-selection-container">
-            <h2>Select Your Heroes</h2>
-
+            <h2>选择你的英雄</h2>
             <div class="player-count-selector">
-                <label for="player-count">Number of Players:</label>
-                <input type="range" id="player-count" min="2" max="5" value="2"
-                       oninput="updatePlayerCount(this.value)">
+                <label for="player-count">玩家人数：</label>
+                <input type="range" id="player-count" min="2" max="5" value="2" oninput="updatePlayerCount(this.value)">
                 <span id="player-count-display">2</span>
             </div>
-
             <div id="hero-grid" class="hero-grid"></div>
-
             <div class="selection-info">
-                <p id="selection-status">Select <span id="heroes-needed">2</span> heroes to continue</p>
+                <p id="selection-status">还需选择 <span id="heroes-needed">2</span> 位英雄</p>
             </div>
-
             <div class="hero-selection-buttons">
-                <button class="btn btn-secondary" onclick="backToMenu()">Back</button>
-                <button class="btn btn-primary" id="start-game-btn" onclick="startGame()" disabled>
-                    Start Game
-                </button>
+                <button class="btn btn-ghost" onclick="backToMenu()">返回</button>
+                <button class="btn btn-primary" id="start-game-btn" onclick="startGame()" disabled>开始游戏</button>
             </div>
         </div>
     </div>
 
-    <!-- Game Screen -->
     <div id="game-screen" class="screen">
         <div class="game-layout">
-            <!-- Top Bar -->
             <div class="top-bar">
                 <div class="turn-info">
-                    <span>Turn: <strong id="turn-number">1</strong></span>
+                    <span>回合：<strong id="turn-number">1</strong></span>
                     <span class="separator">|</span>
-                    <span>Current Player: <strong id="current-player-name">Player 1</strong></span>
+                    <span>当前玩家：<strong id="current-player-name">玩家 1</strong></span>
                 </div>
-                <button class="btn btn-small" onclick="backToMenu()">Menu</button>
+                <button class="btn btn-ghost btn-small" onclick="backToMenu()">菜单</button>
             </div>
-
-            <!-- Main Game Area -->
             <div class="game-content">
-                <!-- Game Board -->
-                <div class="board-container">
-                    <canvas id="game-board" width="800" height="800"></canvas>
+                <div class="board-container" id="board-container">
+                    <div class="jungle-bg">
+                        <div class="fog-layer"></div>
+                        <canvas id="particle-canvas"></canvas>
+                        <svg id="path-svg" class="path-svg"></svg>
+                        <div id="board-spaces" class="board-spaces"></div>
+                        <div id="player-tokens" class="player-tokens"></div>
+                        <div class="board-center-info">
+                            <div class="center-title">远古大亨</div>
+                            <div class="center-sub">DOTA 2</div>
+                            <div class="center-turn" id="center-turn"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Side Panel -->
                 <div class="side-panel">
-                    <!-- Player Info -->
                     <div class="panel-section">
-                        <h3>Player Info</h3>
+                        <h3>玩家信息</h3>
                         <div id="player-info" class="player-info"></div>
                     </div>
-
-                    <!-- Game Actions -->
                     <div class="panel-section">
-                        <h3>Actions</h3>
-                        <button class="btn btn-primary btn-block" id="roll-dice-btn" onclick="rollDice()">
-                            🎲 Roll Dice
-                        </button>
-                        <button class="btn btn-secondary btn-block" id="end-turn-btn" onclick="endTurn()" disabled>
-                            ⏭️ End Turn
-                        </button>
+                        <h3>操作</h3>
+                        <div class="dice-container" id="dice-container">
+                            <div class="dice-3d" id="dice1">
+                                <div class="dice-face-3d dice-front">1</div>
+                                <div class="dice-face-3d dice-back">6</div>
+                                <div class="dice-face-3d dice-right">3</div>
+                                <div class="dice-face-3d dice-left">4</div>
+                                <div class="dice-face-3d dice-top">2</div>
+                                <div class="dice-face-3d dice-bottom">5</div>
+                            </div>
+                            <div class="dice-3d" id="dice2">
+                                <div class="dice-face-3d dice-front">1</div>
+                                <div class="dice-face-3d dice-back">6</div>
+                                <div class="dice-face-3d dice-right">3</div>
+                                <div class="dice-face-3d dice-left">4</div>
+                                <div class="dice-face-3d dice-top">2</div>
+                                <div class="dice-face-3d dice-bottom">5</div>
+                            </div>
+                        </div>
                         <div id="dice-result" class="dice-result"></div>
+                        <button class="btn btn-primary btn-block" id="roll-dice-btn" onclick="rollDice()">掷骰子</button>
+                        <button class="btn btn-secondary btn-block" id="build-btn" onclick="openBuildMenu()" style="display:none">建造房屋</button>
+                        <button class="btn btn-secondary btn-block" id="end-turn-btn" onclick="endTurn()" disabled>结束回合</button>
                     </div>
-
-                    <!-- Event Log -->
                     <div class="panel-section event-log-section">
-                        <h3>Event Log</h3>
+                        <h3>事件日志</h3>
                         <div id="event-log" class="event-log"></div>
                     </div>
                 </div>
@@ -106,43 +109,68 @@
         </div>
     </div>
 
-    <!-- Instructions Modal -->
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content purchase-modal-box">
+            <span class="close" onclick="closePurchaseModal()">&times;</span>
+            <div id="purchase-modal-content"></div>
+        </div>
+    </div>
+
+    <div id="card-modal" class="modal">
+        <div class="modal-content card-modal-box">
+            <div id="card-modal-content"></div>
+        </div>
+    </div>
+
+    <div id="build-modal" class="modal">
+        <div class="modal-content build-modal-box">
+            <span class="close" onclick="closeBuildModal()">&times;</span>
+            <h3>建造房屋</h3>
+            <div id="build-modal-content"></div>
+        </div>
+    </div>
+
     <div id="instructions-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('instructions-modal')">&times;</span>
-            <h2>How to Play</h2>
+            <h2>游戏规则</h2>
             <div class="instructions">
-                <h3>🎯 Objective</h3>
-                <p>Become the richest player by buying properties and collecting rent!</p>
-
-                <h3>🎮 Gameplay</h3>
+                <h3>目标</h3>
+                <p>通过购买地产和收取租金，成为最富有的玩家！</p>
+                <h3>棋盘</h3>
+                <p>36格棋盘（32个非角落格+4个角落），包含地产、哨站、商店、神符点、中立物品等不同格子。</p>
+                <h3>玩法</h3>
                 <ul>
-                    <li><strong>Roll Dice:</strong> Click "Roll Dice" to move your hero</li>
-                    <li><strong>Buy Properties:</strong> Land on unowned properties to purchase them</li>
-                    <li><strong>Collect Rent:</strong> Earn gold when others land on your properties</li>
-                    <li><strong>Pass Fountain:</strong> Collect 200 gold when you pass the starting position</li>
-                    <li><strong>Hero Abilities:</strong> Each hero has unique passive bonuses</li>
+                    <li><strong>掷骰子：</strong>点击"掷骰子"移动你的英雄</li>
+                    <li><strong>购买地产：</strong>踩到无主地产时可以购买</li>
+                    <li><strong>收取租金：</strong>其他玩家踩到你的地产需要付租金</li>
+                    <li><strong>建造房屋：</strong>拥有同色系全部地产后可以建造（均匀建造规则）</li>
+                    <li><strong>使用技能：</strong>每个英雄都有独特的技能</li>
                 </ul>
-
-                <h3>🏆 Winning</h3>
-                <p>Be the last player standing or have the most gold when the game ends!</p>
+                <h3>建造规则</h3>
+                <ul>
+                    <li>需拥有同色系全部地产</li>
+                    <li>绿房子建造费 100G，红旅馆 500G</li>
+                    <li>必须均匀建造：同色系地块差距不超过1级</li>
+                    <li>红旅馆需要：4栋绿房子 + 第20回合后</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- About Modal -->
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('about-modal')">&times;</span>
-            <h2>About Ancient Tycoon</h2>
-            <p>A Dota 2 themed Monopoly-style board game.</p>
-            <p>All Dota 2 characters and assets are property of Valve Corporation.</p>
-            <p class="mt-20">Created with ❤️ for educational purposes.</p>
+            <h2>关于游戏</h2>
+            <p class="mt-20">远古大亨是一款Dota 2主题的大富翁游戏，丛林冒险版。</p>
+            <p>10位可选英雄，每位都有独特的能力。</p>
+            <p>在这片神秘的丛林中，购买领地、建造防御塔、收取过路费，成为远古大亨！</p>
+            <button class="btn btn-ghost mt-20" onclick="closeModal('about-modal')">返回</button>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="js/constants.js"></script>
+    <script src="js/board.js"></script>
     <script src="js/game.js"></script>
     <script src="js/ui.js"></script>
 </body>

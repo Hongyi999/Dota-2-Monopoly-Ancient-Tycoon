@@ -1,17 +1,7 @@
-// UI Controller
-
-// Screen management
 function showScreen(screenId) {
-    // Hide all screens
-    document.querySelectorAll('.screen').forEach(screen => {
-        screen.classList.remove('active');
-    });
-
-    // Show target screen
-    const targetScreen = document.getElementById(screenId);
-    if (targetScreen) {
-        targetScreen.classList.add('active');
-    }
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(screenId);
+    if (target) target.classList.add('active');
 }
 
 function showHeroSelection() {
@@ -21,7 +11,7 @@ function showHeroSelection() {
 
 function backToMenu() {
     if (gameState.gameStarted) {
-        if (confirm('Are you sure you want to quit the current game?')) {
+        if (confirm('确定要退出当前游戏吗？')) {
             resetGame();
             showScreen('main-menu');
         }
@@ -31,6 +21,10 @@ function backToMenu() {
 }
 
 function resetGame() {
+    if (particleSystem) {
+        particleSystem.stop();
+        particleSystem = null;
+    }
     gameState = {
         players: [],
         currentPlayerIndex: 0,
@@ -38,26 +32,31 @@ function resetGame() {
         selectedHeroes: [],
         playerCount: 2,
         gameStarted: false,
-        diceRolled: false
+        diceRolled: false,
+        propertyBuildings: {},
+        propertyOwners: {},
+        pendingAction: null,
+        lastDice: [0, 0],
+        doublesCount: 0
     };
-
     document.getElementById('event-log').innerHTML = '';
     document.getElementById('dice-result').innerHTML = '';
+    const boardSpaces = document.getElementById('board-spaces');
+    if (boardSpaces) boardSpaces.innerHTML = '';
+    const playerTokens = document.getElementById('player-tokens');
+    if (playerTokens) playerTokens.innerHTML = '';
+    const pathSvg = document.getElementById('path-svg');
+    if (pathSvg) pathSvg.innerHTML = '';
 }
 
-// Modal management
 function showModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.add('active');
-    }
+    if (modal) modal.classList.add('active');
 }
 
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('active');
-    }
+    if (modal) modal.classList.remove('active');
 }
 
 function showInstructions() {
@@ -68,38 +67,40 @@ function showAbout() {
     showModal('about-modal');
 }
 
-// Close modal when clicking outside
 window.onclick = function(event) {
     if (event.target.classList.contains('modal')) {
         event.target.classList.remove('active');
+        if (gameState.pendingAction) {
+            gameState.pendingAction = null;
+        }
     }
 }
 
-// Initialize on load
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('🎮 Ancient Tycoon - Web Edition Loaded!');
+    console.log('远古大亨 - 网页版已加载！');
     showScreen('main-menu');
 });
 
-// Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     if (gameState.gameStarted) {
-        // Space to roll dice
         if (e.code === 'Space' && !gameState.diceRolled) {
             e.preventDefault();
             rollDice();
         }
-        // Enter to end turn
         if (e.code === 'Enter' && gameState.diceRolled) {
             e.preventDefault();
+            if (document.getElementById('purchase-modal').classList.contains('active')) return;
+            if (document.getElementById('card-modal').classList.contains('active')) return;
             endTurn();
         }
     }
 
-    // Escape to close modals
     if (e.code === 'Escape') {
         document.querySelectorAll('.modal.active').forEach(modal => {
             modal.classList.remove('active');
         });
+        if (gameState.pendingAction) {
+            closePurchaseModal();
+        }
     }
 });
