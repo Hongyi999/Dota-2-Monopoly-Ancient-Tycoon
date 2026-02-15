@@ -1,91 +1,132 @@
-# Ancient Tycoon
+# 🏛️ 远古大亨 Ancient Tycoon
 
-A Dota 2 themed Monopoly-style board game built with Godot Engine 4.x
+> Dota 2 主题大富翁桌游 · 丛林版 v0.4.0
 
-## Game Overview
+**[🎮 在线试玩 Play Now](https://hongyi999.github.io/Dota-2-Monopoly-Ancient-Tycoon/)**
 
-Ancient Tycoon is a digital board game that combines the strategic property management of Monopoly with the rich universe of Dota 2. Players choose from 10 unique heroes, each with special abilities, and compete to dominate a 32-space board filled with Dota 2 themed properties.
+---
 
-## Features
+## 📖 游戏简介
 
-- **32-Space Board**: Inspired by the Dota 2 map (Radiant Jungle, Mid Lane, Dire Offlane, High Ground)
-- **10 Playable Heroes**: Each with unique passive or active abilities
-- **Item Shop System**: 8 purchasable items including Divine Rapier, Black King Bar, and more
-- **Card Systems**: Rune cards and Neutral Item cards for random events
-- **Building System**: Upgrade properties with green houses and red hotels
-- **2-5 Players**: Local multiplayer support
+远古大亨是一款以 Dota 2 为主题的大富翁风格网页桌游。玩家选择 Dota 2 英雄，在丛林蜿蜒小径上掷骰前行，购买地产、建造房屋和酒店、使用物品和卡牌，最终成为远古大亨！
 
-## Technology Stack
+全中文界面，浏览器直接游玩，无需下载安装。
 
-- **Engine**: Godot 4.3
-- **Language**: GDScript
-- **Platform**: Windows, Linux, macOS (future: Web export)
+---
 
-## Project Structure
+## ✨ 核心特性
+
+### 🗺️ 丛林蜿蜒棋盘
+- **36 格有机环路** — 不是传统方形棋盘，而是蜿蜒的丛林小径
+- SVG 发光路径连接所有格子，深绿丛林配色
+- 萤火虫粒子 + 飘动迷雾动画，营造夜间丛林氛围
+- 每个格子带类型图标、悬停提示、所有者标记
+
+### 🦸 10 位可选英雄
+| 英雄 | 技能 | 效果 |
+|------|------|------|
+| 炼金术士 | 贪婪 (被动) | 经过起点额外获得金币 |
+| 赏金猎人 | 忍术 (被动) | 收租时额外获得赏金 |
+| 先知 | 传送 (主动) | 传送到任意格子 |
+| 工程师 | 埋雷 (主动) | 在格子上放置地雷 |
+| 虚空假面 | 时间漫游 (主动) | 回到上一次位置 |
+| 斧王 | 淘汰之刃 (主动) | 对手在你地产付双倍租金 |
+| 幻影刺客 | 恩赐解脱 (被动) | 租金有暴击几率翻倍 |
+| 巫妖 | 连锁霜冻 (主动) | 冻结对手地产一回合 |
+| 风行者 | 疾风步 (主动) | 下次移动双倍步数 |
+| 拉比克 | 法术窃取 (主动) | 复制对手的技能 |
+
+### 🏗️ 建造系统
+- **绿色小屋** (最多4栋): 租金倍率 ×3 / ×5 / ×8 / ×15
+- **红色酒店** (1座): 租金倍率 ×30，需拥有4栋小屋 + 500G
+- 均匀建造规则：同色系地产需均匀升级
+- 酒店限制：第20回合前不可建造酒店
+
+### 🃏 卡牌系统
+- **7 张符文卡**: 赏金符文、双倍符文、幻象符文、加速符文等
+- **8 张野怪物品卡**: 可怜鬼之盾、魔铁皮靴、仙灵之火等
+- 加权概率抽取，每种卡牌有不同出现几率
+
+### 💰 经济平衡
+| 参数 | 数值 |
+|------|------|
+| 初始金币 | 2000G |
+| 每圈工资 | 200G |
+| 租金上限 | 总资产的 40% |
+| 小屋造价 | 100G |
+| 酒店造价 | 500G |
+| 买活费用 | 500G (复活后持有 1000G) |
+| 最大回合数 | 50 回合 |
+
+### 🎲 动画效果
+- 3D 骰子翻转动画
+- 玩家沿路径逐步跳动移动
+- 萤火虫闪烁 + 迷雾飘动粒子系统
+- 格子悬停高亮 + 信息提示
+
+---
+
+## 🎮 玩法说明
+
+1. **选择英雄** — 2-5 名玩家各选一位 Dota 2 英雄
+2. **掷骰移动** — 点击掷骰子，棋子自动沿路径移动
+3. **购买地产** — 踩到无主地产可选择购买
+4. **收取租金** — 对手踩到你的地产需支付租金
+5. **建造升级** — 集齐同色地产后可建造小屋/酒店
+6. **使用技能** — 英雄技能可在关键时刻扭转局势
+7. **抽取卡牌** — 踩到符文/野怪格子触发卡牌效果
+8. **最终胜利** — 其他玩家破产或50回合后资产最高者获胜
+
+---
+
+## 🛠️ 技术架构
+
+纯前端静态网页游戏，无需后端服务器。
 
 ```
-ancient-tycoon/
-├── project.godot          # Main project configuration
-├── scenes/                # Game scenes (.tscn files)
-├── scripts/               # GDScript files (.gd)
-├── assets/                # Game assets
-│   ├── textures/          # 2D textures and sprites
-│   ├── models/            # 3D models
-│   ├── sounds/            # Audio files
-│   └── ui/                # UI elements
-└── data/                  # Game data (JSON/resources)
+web/
+├── index.html           # 主页面
+├── css/
+│   └── style.css        # 丛林暗色主题样式
+└── js/
+    ├── constants.js     # 游戏数据：英雄、地产、物品、卡牌
+    ├── board.js         # 棋盘渲染、路径布局、粒子动画
+    ├── game.js          # 游戏核心逻辑、建造系统
+    └── ui.js            # 界面控制、屏幕管理
 ```
 
-## Getting Started
+- **语言**: HTML / CSS / JavaScript (原生，无框架依赖)
+- **图片资源**: Steam CDN (Dota 2 英雄/物品官方图片)
+- **棋盘渲染**: HTML + CSS + SVG (非 Canvas)
+- **动画**: CSS Transitions + Canvas 粒子系统
 
-### Prerequisites
-- Godot Engine 4.3 or later ([Download here](https://godotengine.org/download))
+---
 
-### Running the Project
-1. Clone this repository
-2. Open Godot Engine
-3. Click "Import" and select the `project.godot` file
-4. Click "Import & Edit"
-5. Press F5 to run the game
+## 🚀 本地运行
 
-## Development Roadmap
+```bash
+git clone https://github.com/Hongyi999/Dota-2-Monopoly-Ancient-Tycoon.git
+cd Dota-2-Monopoly-Ancient-Tycoon/web
+python3 -m http.server 5000
+```
 
-### Phase 1: Core Prototype ✅
-- [x] Project setup
-- [ ] Basic 32-space board
-- [ ] Dice roll and movement system
-- [ ] 3 test heroes (Alchemist, Axe, Techies)
-- [ ] Purchase, rent, bankruptcy system
+打开浏览器访问 `http://localhost:5000`
 
-### Phase 2: Game Mechanics
-- [ ] All 10 heroes
-- [ ] Building system (houses + hotels)
-- [ ] Item system
-- [ ] Card systems
-- [ ] Complete UI/UX
+---
 
-### Phase 3: Art & Audio
-- [ ] 3D models and textures
-- [ ] Particle effects
-- [ ] Sound effects and BGM
-- [ ] Animations
+## 📄 设计文档
 
-### Phase 4: Testing & Balance
-- [ ] Playtesting
-- [ ] Balance adjustments
-- [ ] Bug fixes
-- [ ] Performance optimization
+完整游戏设计文档见 `Game_Development_Document_v2_Optimized[CN] .md`
 
-## Game Design Document
+---
 
-See `Game_Design_Document_v2_EN.md` for the complete game design documentation.
+## 📜 版权声明
 
-## License
+本项目仅供学习和娱乐用途。Dota 2 及所有相关素材为 Valve Corporation 所有。
 
-This project is for educational purposes. Dota 2 and all related assets are property of Valve Corporation.
+---
 
-## Credits
+## 🙏 致谢
 
-- Game Design: Based on Monopoly mechanics with Dota 2 theme
-- Engine: Godot Engine
-- Dota 2: Valve Corporation
+- 游戏设计：基于大富翁经典玩法 + Dota 2 主题
+- 英雄/物品图片：Valve Corporation / Steam CDN
