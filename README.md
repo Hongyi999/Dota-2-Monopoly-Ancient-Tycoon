@@ -1,108 +1,108 @@
-# 🏛️ 远古大亨 Ancient Tycoon
+# 🏛️ Ancient Tycoon (远古大亨)
 
-> Dota 2 主题大富翁桌游 · 丛林版 v0.4.0
+> A Dota 2 Themed Monopoly Board Game · Jungle Edition v0.4.0
 
-**[🎮 在线试玩 Play Now](https://hongyi999.github.io/Dota-2-Monopoly-Ancient-Tycoon/)**
-
----
-
-## 📖 游戏简介
-
-远古大亨是一款以 Dota 2 为主题的大富翁风格网页桌游。玩家选择 Dota 2 英雄，在丛林蜿蜒小径上掷骰前行，购买地产、建造房屋和酒店、使用物品和卡牌，最终成为远古大亨！
-
-全中文界面，浏览器直接游玩，无需下载安装。
+**[🎮 Play Now](https://hongyi999.github.io/Dota-2-Monopoly-Ancient-Tycoon/)**
 
 ---
 
-## ✨ 核心特性
+## 📖 About
 
-### 🗺️ 丛林蜿蜒棋盘
-- **36 格有机环路** — 不是传统方形棋盘，而是蜿蜒的丛林小径
-- SVG 发光路径连接所有格子，深绿丛林配色
-- 萤火虫粒子 + 飘动迷雾动画，营造夜间丛林氛围
-- 每个格子带类型图标、悬停提示、所有者标记
+Ancient Tycoon is a Dota 2 themed Monopoly-style web board game. Players choose from iconic Dota 2 heroes, roll dice to move along a winding jungle trail, buy properties, build houses and hotels, use items and cards, and compete to become the ultimate tycoon!
 
-### 🦸 10 位可选英雄
-| 英雄 | 技能 | 效果 |
-|------|------|------|
-| 炼金术士 | 贪婪 (被动) | 经过起点额外获得金币 |
-| 赏金猎人 | 忍术 (被动) | 收租时额外获得赏金 |
-| 先知 | 传送 (主动) | 传送到任意格子 |
-| 工程师 | 埋雷 (主动) | 在格子上放置地雷 |
-| 虚空假面 | 时间漫游 (主动) | 回到上一次位置 |
-| 斧王 | 淘汰之刃 (主动) | 对手在你地产付双倍租金 |
-| 幻影刺客 | 恩赐解脱 (被动) | 租金有暴击几率翻倍 |
-| 巫妖 | 连锁霜冻 (主动) | 冻结对手地产一回合 |
-| 风行者 | 疾风步 (主动) | 下次移动双倍步数 |
-| 拉比克 | 法术窃取 (主动) | 复制对手的技能 |
-
-### 🏗️ 建造系统
-- **绿色小屋** (最多4栋): 租金倍率 ×3 / ×5 / ×8 / ×15
-- **红色酒店** (1座): 租金倍率 ×30，需拥有4栋小屋 + 500G
-- 均匀建造规则：同色系地产需均匀升级
-- 酒店限制：第20回合前不可建造酒店
-
-### 🃏 卡牌系统
-- **7 张符文卡**: 赏金符文、双倍符文、幻象符文、加速符文等
-- **8 张野怪物品卡**: 可怜鬼之盾、魔铁皮靴、仙灵之火等
-- 加权概率抽取，每种卡牌有不同出现几率
-
-### 💰 经济平衡
-| 参数 | 数值 |
-|------|------|
-| 初始金币 | 2000G |
-| 每圈工资 | 200G |
-| 租金上限 | 总资产的 40% |
-| 小屋造价 | 100G |
-| 酒店造价 | 500G |
-| 买活费用 | 500G (复活后持有 1000G) |
-| 最大回合数 | 50 回合 |
-
-### 🎲 动画效果
-- 3D 骰子翻转动画
-- 玩家沿路径逐步跳动移动
-- 萤火虫闪烁 + 迷雾飘动粒子系统
-- 格子悬停高亮 + 信息提示
+Fully playable in the browser with a Chinese UI — no download or installation required.
 
 ---
 
-## 🎮 玩法说明
+## ✨ Key Features
 
-1. **选择英雄** — 2-5 名玩家各选一位 Dota 2 英雄
-2. **掷骰移动** — 点击掷骰子，棋子自动沿路径移动
-3. **购买地产** — 踩到无主地产可选择购买
-4. **收取租金** — 对手踩到你的地产需支付租金
-5. **建造升级** — 集齐同色地产后可建造小屋/酒店
-6. **使用技能** — 英雄技能可在关键时刻扭转局势
-7. **抽取卡牌** — 踩到符文/野怪格子触发卡牌效果
-8. **最终胜利** — 其他玩家破产或50回合后资产最高者获胜
+### 🗺️ Winding Jungle Board
+- **36-space organic loop** — not a traditional square board, but a winding jungle trail
+- SVG glowing path connecting all spaces with a deep green jungle color scheme
+- Firefly particles + drifting fog animations for an atmospheric night jungle feel
+- Each space features type-specific icons, hover tooltips, and owner indicators
+
+### 🦸 10 Playable Heroes
+| Hero | Ability | Effect |
+|------|---------|--------|
+| Alchemist | Greed (Passive) | Earns bonus gold when passing Start |
+| Bounty Hunter | Jinada (Passive) | Gains bonus gold when collecting rent |
+| Nature's Prophet | Teleport (Active) | Teleport to any space on the board |
+| Techies | Mine (Active) | Place a mine on any space |
+| Faceless Void | Time Walk (Active) | Return to your previous position |
+| Axe | Culling Blade (Active) | Opponents pay double rent on your properties |
+| Phantom Assassin | Coup de Grace (Passive) | Chance to critical strike rent (double) |
+| Lich | Chain Frost (Active) | Freeze an opponent's property for one turn |
+| Windranger | Windrun (Active) | Double movement on your next roll |
+| Rubick | Spell Steal (Active) | Copy an opponent's ability |
+
+### 🏗️ Building System
+- **Green Houses** (up to 4): Rent multipliers ×3 / ×5 / ×8 / ×15
+- **Red Hotel** (1 per property): Rent multiplier ×30, requires 4 houses + 500G
+- Even-build rule: Properties in the same color set must be upgraded evenly
+- Hotel restriction: Hotels cannot be built before turn 20
+
+### 🃏 Card System
+- **7 Rune Cards**: Bounty Rune, Double Damage, Illusion, Haste, and more
+- **8 Neutral Item Cards**: Poor Man's Shield, Ironwood Tree, Fairy Fire, and more
+- Weighted probability drawing with varying odds for each card
+
+### 💰 Economy Balance
+| Parameter | Value |
+|-----------|-------|
+| Starting Gold | 2,000G |
+| Salary per Lap | 200G |
+| Rent Cap | 40% of total assets |
+| House Cost | 100G |
+| Hotel Cost | 500G |
+| Buyback Cost | 500G (respawn with 1,000G) |
+| Max Turns | 50 |
+
+### 🎲 Animations & Effects
+- 3D dice rolling animation with realistic tumbling
+- Step-by-step player movement along the path with bounce effects
+- Firefly glow + drifting fog particle system
+- Space hover highlights + property info tooltips
 
 ---
 
-## 🛠️ 技术架构
+## 🎮 How to Play
 
-纯前端静态网页游戏，无需后端服务器。
+1. **Pick a Hero** — 2–5 players each select a Dota 2 hero
+2. **Roll the Dice** — Click to roll; your token moves automatically along the path
+3. **Buy Properties** — Land on an unowned property to purchase it
+4. **Collect Rent** — Opponents landing on your property must pay rent
+5. **Build Upgrades** — Own all properties in a color set to build houses/hotels
+6. **Use Abilities** — Hero abilities can turn the tide at critical moments
+7. **Draw Cards** — Landing on Rune/Neutral spaces triggers card effects
+8. **Win the Game** — Last player standing or highest net worth after 50 turns wins
+
+---
+
+## 🛠️ Tech Stack
+
+A purely client-side static web game — no backend server required.
 
 ```
 web/
-├── index.html           # 主页面
+├── index.html           # Main game page
 ├── css/
-│   └── style.css        # 丛林暗色主题样式
+│   └── style.css        # Jungle dark theme styles
 └── js/
-    ├── constants.js     # 游戏数据：英雄、地产、物品、卡牌
-    ├── board.js         # 棋盘渲染、路径布局、粒子动画
-    ├── game.js          # 游戏核心逻辑、建造系统
-    └── ui.js            # 界面控制、屏幕管理
+    ├── constants.js     # Game data: heroes, properties, items, cards
+    ├── board.js         # Board rendering, path layout, particle animations
+    ├── game.js          # Core game logic, building system
+    └── ui.js            # UI controller, screen management
 ```
 
-- **语言**: HTML / CSS / JavaScript (原生，无框架依赖)
-- **图片资源**: Steam CDN (Dota 2 英雄/物品官方图片)
-- **棋盘渲染**: HTML + CSS + SVG (非 Canvas)
-- **动画**: CSS Transitions + Canvas 粒子系统
+- **Languages**: HTML / CSS / JavaScript (vanilla, no framework dependencies)
+- **Image Assets**: Steam CDN (official Dota 2 hero & item images)
+- **Board Rendering**: HTML + CSS + SVG (not Canvas)
+- **Animations**: CSS Transitions + Canvas particle system
 
 ---
 
-## 🚀 本地运行
+## 🚀 Run Locally
 
 ```bash
 git clone https://github.com/Hongyi999/Dota-2-Monopoly-Ancient-Tycoon.git
@@ -110,23 +110,23 @@ cd Dota-2-Monopoly-Ancient-Tycoon/web
 python3 -m http.server 5000
 ```
 
-打开浏览器访问 `http://localhost:5000`
+Then open `http://localhost:5000` in your browser.
 
 ---
 
-## 📄 设计文档
+## 📄 Design Document
 
-完整游戏设计文档见 `Game_Development_Document_v2_Optimized[CN] .md`
-
----
-
-## 📜 版权声明
-
-本项目仅供学习和娱乐用途。Dota 2 及所有相关素材为 Valve Corporation 所有。
+See `Game_Development_Document_v2_Optimized[CN] .md` for the full game design documentation (in Chinese).
 
 ---
 
-## 🙏 致谢
+## 📜 Disclaimer
 
-- 游戏设计：基于大富翁经典玩法 + Dota 2 主题
-- 英雄/物品图片：Valve Corporation / Steam CDN
+This project is for educational and entertainment purposes only. Dota 2 and all related assets are the property of Valve Corporation.
+
+---
+
+## 🙏 Credits
+
+- Game Design: Classic Monopoly mechanics with a Dota 2 twist
+- Hero & Item Images: Valve Corporation / Steam CDN
